@@ -12,3 +12,18 @@ router.get("/api/workouts", (req, res) => {
         res.json(allWorkouts);
     }); 
 });
+
+router.put("/api/workouts/:id", (req, res) => {
+    Workout.findByIdAndUpdate(
+        req.params.id, 
+        {
+            $push: {
+                exercises: req.body
+            }
+        }
+    ).then(function(allWorkouts) {
+        res.json(allWorkouts);
+    }); 
+});
+
+module.exports = router;
