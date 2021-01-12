@@ -26,4 +26,11 @@ router.put("/api/workouts/:id", (req, res) => {
     }); 
 });
 
+router.post("/api/workouts", (req, res) => {
+    Workout.create({})
+    .then(function(allWorkouts) {
+        res.json(allWorkouts);
+    }); 
+});
+
 module.exports = router;
