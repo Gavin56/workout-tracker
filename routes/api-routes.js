@@ -5,6 +5,7 @@ router.get("/api/workouts", (req, res) => {
     Workout.aggregate([{
         $addFields: {
             totalDuration: {
+                //Syntax is confusing. Why $ in quotes?
                 $sum: "$exercises.duration"
             }
         }
@@ -29,6 +30,14 @@ router.put("/api/workouts/:id", (req, res) => {
 router.post("/api/workouts", (req, res) => {
     Workout.create({})
     .then(function(allWorkouts) {
+        res.json(allWorkouts);
+    }); 
+});
+
+router.get("/api/workouts/range", (req, res) => {
+    Workout.find({}).limit(7)
+    .then(function(allWorkouts) {
+        console.log(allWorkouts)
         res.json(allWorkouts);
     }); 
 });
