@@ -2,16 +2,16 @@ const router = require("express").Router();
 const Workout = require("../models/workoutModel");
 
 router.get("/api/workouts", (req, res) => {
-    Workout.aggregate([{
-        $addFields: {
-            totalDuration: {
-                //Syntax is confusing. Why $ in quotes?
-                $sum: "$exercises.duration"
-            }
-        }
-    }]).then(function(allWorkouts) {
-        res.json(allWorkouts);
-    }); 
+    // Workout.aggregate([{
+    //     $addFields: {
+    //         totalDuration: {
+    //             //Syntax is confusing. Why $ in quotes?
+    //             $sum: "$exercises.duration"
+    //         }
+    //     }
+    // }]).then(function(allWorkouts) {
+    //     res.json(allWorkouts);
+    // }); 
 });
 
 router.put("/api/workouts/:id", (req, res) => {
