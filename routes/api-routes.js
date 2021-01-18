@@ -21,8 +21,7 @@ router.put("/api/workouts/:id", (req, res) => {
             $push: {
                 exercises: req.body
             }
-        } 
-        // , {new: true}
+        } , {new: true}
     ).then(function (allWorkouts) {
         res.json(allWorkouts);
     }).catch(err => {
