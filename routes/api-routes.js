@@ -9,37 +9,52 @@ router.get("/api/workouts", (req, res) => {
                 $sum: "$exercises.duration"
             }
         }
-    }]).then(function(allWorkouts) {
+    }]).then(function (allWorkouts) {
         res.json(allWorkouts);
-    }); 
+    });
 });
 
 router.put("/api/workouts/:id", (req, res) => {
     Workout.findByIdAndUpdate(
-        req.params.id, 
+        req.params.id,
         {
             $push: {
                 exercises: req.body
             }
-        }
-    ).then(function(allWorkouts) {
+        } 
+        // , {new: true}
+    ).then(function (allWorkouts) {
         res.json(allWorkouts);
-    }); 
+    }).catch(err => {
+        console.log(err);
+    });
 });
+
+// router.put("/api/workouts/:id", function(req,res){
+//     Workout.findByIdAndUpdate(req.params.id, { $push: {exercises: req.body} }, 
+//         {new: true}
+//         )
+//     .then(workout => {
+//         res.json(workout);
+//     }).catch(err => {
+//         console.log(err);
+//     })
+// })
+
 
 router.post("/api/workouts", (req, res) => {
     Workout.create({})
-    .then(function(allWorkouts) {
-        res.json(allWorkouts);
-    }); 
+        .then(function (allWorkouts) {
+            res.json(allWorkouts);
+        });
 });
 
 router.get("/api/workouts/range", (req, res) => {
     Workout.find({}).limit(7)
-    .then(function(allWorkouts) {
-        console.log(allWorkouts)
-        res.json(allWorkouts);
-    }); 
+        .then(function (allWorkouts) {
+            console.log(allWorkouts)
+            res.json(allWorkouts);
+        });
 });
 
 module.exports = router;
