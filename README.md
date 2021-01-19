@@ -32,3 +32,5 @@ Begin by clicking the "New Workout" button and selecting the type of exercise fr
 https://vast-garden-04302.herokuapp.com/
 
 ## Images
+<img src="https://github.com/Gavin56/workout-tracker/blob/main/assets/images/fitnessTrackerMain.png?raw=true" alt="Main Page" width="600"/>
+<img src="https://github.com/Gavin56/workout-tracker/blob/main/assets/images/fitnessTrackerDash.png?raw=true" alt="Dashboard Page" width="600"/>
